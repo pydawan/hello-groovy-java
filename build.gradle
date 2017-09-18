@@ -1,0 +1,37 @@
+apply plugin: 'groovy'
+apply plugin: 'eclipse'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+group = 'br.org.bytespace.hello.groovy.java'
+archivesBaseName = 'hello-groovy-java'
+version = 'v1.0.0-SNAPSHOT'
+
+sourceSets.main.groovy.srcDir 'src/main/java'
+sourceSets.main.java.srcDirs = []
+
+sourceSets.test.groovy.srcDir 'src/test/java'
+sourceSets.test.java.srcDirs = []
+
+jar {
+   manifest {
+      attributes(
+         'Implementation-Title': 'Groovy and Java Integration example.',
+         'Implementation-Version': 1.0
+      )
+   }
+}
+
+eclipse.project { natures 'org.springsource.ide.eclipse.gradle.core.nature' }
+
+repositories {
+   mavenLocal()
+   mavenCentral()
+}
+
+dependencies {
+   compile 'org.codehaus.groovy:groovy-all:2.4.7'
+   testCompile 'junit:junit:4.12'
+}
+
